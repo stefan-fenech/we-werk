@@ -1,10 +1,12 @@
-import { useState } from 'react';
 import axios from 'axios';
+import { useState } from 'react';
 import { Login } from './Login';
+import { useNavigate } from 'react-router-dom';
 
 export function Home(props: any) {
     const [email, setemail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleEmail = (event: any) => {
         setemail(event.target.value);
@@ -15,16 +17,28 @@ export function Home(props: any) {
     };
 
     const onSubmit = () => {
-        axios.post('http://localhost:3001/api/users', { email: email, password: password }).then(() => {});
+        if (password === '' || email === '') {
+            return console.log('Empty fields');
+        }
+        axios.post('http://localhost:3001/api/session', { email: email, password: password }, { withCredentials: true }).then((response) => {
+            if (response.data.email === email) {
+                console.log(response);
+                navigate('/dashboard');
+            } else {
+                console.log('incorrect');
+            }
+        });
     };
 
     return (
         <>
             <div id='seeker-login'>
-                <Login handleemail={handleEmail} handlePassword={handlePassword} onSubmit={onSubmit} />
+                <h1>Work?</h1>
+                <Login handleEmail={handleEmail} handlePassword={handlePassword} onSubmit={onSubmit} />
             </div>
             <div id='poster-login'>
-                <Login handleemail={handleEmail} handlePassword={handlePassword} onSubmit={onSubmit} />
+                <h1>Workers?</h1>
+                <Login handleEmail={handleEmail} handlePassword={handlePassword} onSubmit={onSubmit} />
             </div>
         </>
     );

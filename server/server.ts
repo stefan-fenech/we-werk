@@ -1,19 +1,50 @@
-if (process.env.NODE_ENV !== "production") {
-    require("dotenv").config();
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
 }
 
-import express, { Request, Response } from "express";
-import path from "path";
-import cors from 'cors'
+// App requirements
+import express from 'express';
+import path from 'path';
+import cors from 'cors';
+import session from 'express-session';
 import { MongoClient } from 'mongodb';
-import { updateShorthandPropertyAssignment } from "typescript";
 
-const PORT = process.env.PORT || (process.env.NODE_ENV === "production" && 3000) || 3001;
+const PORT = process.env.PORT || (process.env.NODE_ENV === 'production' && 3000) || 3001;
 const app = express();
 
-app.set("trust proxy", 1);
+// app.set('trust proxy', 1);
 app.use(express.json());
-app.use(cors());
+
+// Controller imports
+import usersController from './controllers/users/index';
+import sessionsController from './controllers/sessions/index';
+
+app.use(
+    cors({
+        origin: 'http://localhost:3000',
+        credentials: true,
+        optionsSuccessStatus: 200,
+    })
+);
+
+// Sessions info
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: false,
+        },
+    })
+);
+
+declare module 'express-session' {
+    interface Session {
+        email: string;
+    }
+}
+// End Sessions info
 
 // Start MongoDB connection
 const uri = 'mongodb://127.0.0.1:27017';
@@ -22,45 +53,20 @@ let db = null;
 async function run() {
     await client.connect();
     db = client.db('we-werk');
-    console.log('MongoDB connected successfully to server');
 }
 run().catch(console.log);
 // End MongoDB connection
 
+// Use Controllers
+app.use('/api/users', usersController);
+app.use('/api/session', sessionsController);
+// End Use controllers
 
-app.get("/api/users", (req: Request<any, any, any, any>, res: Response<any>) => {
-    const cursor = db.collection('users').find();
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
-    cursor.toArray().then((result: any) => {
-        res.json(result);
-    });
-});
-
-app.post('/api/users', (req, res) => {
-    const user = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password,
-        skills: req.body.skills,
-    };
-
-    db.collection('users')
-        .insertOne(user)
-        .then((result: any) => {
-            console.log(result);
-            res.json({ status: 'New user added to database' });
-        });
-});
-
-
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "..", "client", "build")));
-
-    app.get("/*", (req, res) => {
-        res.sendFile(
-            path.join(__dirname, "..", "client", "build", "index.html")
-        );
+    app.get('/*', (req, res) => {
+        res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
     });
 }
 

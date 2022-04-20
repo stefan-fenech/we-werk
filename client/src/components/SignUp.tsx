@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,16 +10,24 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useState } from 'react';
 
 const theme = createTheme();
 
 export function SignUp() {
-    const [jsCheck, setJsCheck] = React.useState(false);
-    const [nodeCheck, setNodeCheck] = React.useState(false);
-    const [reactCheck, setReactCheck] = React.useState(false);
-    const [pythonCheck, setPythonCheck] = React.useState(false);
-    const [psqlCheck, setPsqlCheck] = React.useState(false);
+    const [jsCheck, setJsCheck] = useState(false);
+    const [nodeCheck, setNodeCheck] = useState(false);
+    const [reactCheck, setReactCheck] = useState(false);
+    const [pythonCheck, setPythonCheck] = useState(false);
+    const [psqlCheck, setPsqlCheck] = useState(false);
+    const [mongoCheck, setMongoCheck] = useState(false);
+    const [htmlCheck, setHtmlCheck] = useState(false);
+    const [cssCheck, setCssCheck] = useState(false);
+    const [typescriptCheck, setTypescriptCheck] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -37,11 +44,15 @@ export function SignUp() {
                     react: reactCheck,
                     python: pythonCheck,
                     psql: psqlCheck,
+                    mongo: mongoCheck,
+                    html: htmlCheck,
+                    css: cssCheck,
+                    typescript: typescriptCheck,
                 },
             ],
         };
-        axios.post('http://localhost:3001/api/users', formBody).then((response) => {
-            console.log(response);
+        axios.post('http://localhost:3001/api/users', formBody).then(() => {
+            navigate('/');
         });
     };
 
@@ -58,8 +69,25 @@ export function SignUp() {
     const handlePythonCheck = (event: any) => {
         setPythonCheck(event.target.checked);
     };
+
     const handlePsqlCheck = (event: any) => {
         setPsqlCheck(event.target.checked);
+    };
+
+    const handleMongoCheck = (event: any) => {
+        setMongoCheck(event.target.checked);
+    };
+
+    const handleHtmlCheck = (event: any) => {
+        setHtmlCheck(event.target.checked);
+    };
+
+    const handleCssCheck = (event: any) => {
+        setCssCheck(event.target.checked);
+    };
+
+    const handleTypescriptCheck = (event: any) => {
+        setTypescriptCheck(event.target.checked);
     };
 
     return (
@@ -91,23 +119,46 @@ export function SignUp() {
                             <Grid item xs={12}>
                                 <TextField required fullWidth name='password' label='Password' type='password' id='password' autoComplete='new-password' />
                             </Grid>
-                            <Grid container spacing={2} columns={16}>
-                                <Grid item xs={8}>
-                                    <FormControlLabel control={<Checkbox value='JS' color='primary' />} label='JavaScript' id='js' onChange={handleJsCheck} />
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    padding: '5px',
+                                }}>
+                                <Typography component='h2' variant='h6'>
+                                    Technical skills:
+                                </Typography>
+                                <Grid container spacing={0.5} columns={12}>
+                                    <Grid item xs={4}>
+                                        <FormControlLabel control={<Checkbox value='JS' color='primary' />} label='JavaScript' id='js' onChange={handleJsCheck} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <FormControlLabel control={<Checkbox value='Node' color='primary' />} label='NodeJS' onChange={handleNodeCheck} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <FormControlLabel control={<Checkbox value='React' color='primary' />} label='React' onChange={handleReactCheck} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <FormControlLabel control={<Checkbox value='Python' color='primary' />} label='Python' onChange={handlePythonCheck} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <FormControlLabel control={<Checkbox value='PSQL' color='primary' />} label='PostgreSQL' onChange={handlePsqlCheck} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <FormControlLabel control={<Checkbox value='mongo' color='primary' />} label='MongoDB' onChange={handleMongoCheck} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <FormControlLabel control={<Checkbox value='html' color='primary' />} label='HTML' onChange={handleHtmlCheck} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <FormControlLabel control={<Checkbox value='css' color='primary' />} label='CSS' onChange={handleCssCheck} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <FormControlLabel control={<Checkbox value='typescript' color='primary' />} label='TypeScript' onChange={handleTypescriptCheck} />
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={8}>
-                                    <FormControlLabel control={<Checkbox value='Node' color='primary' />} label='NodeJS' onChange={handleNodeCheck} />
-                                </Grid>
-                                <Grid item xs={8}>
-                                    <FormControlLabel control={<Checkbox value='React' color='primary' />} label='React' onChange={handleReactCheck} />
-                                </Grid>
-                                <Grid item xs={8}>
-                                    <FormControlLabel control={<Checkbox value='Python' color='primary' />} label='Python' onChange={handlePythonCheck} />
-                                </Grid>
-                                <Grid item xs={8}>
-                                    <FormControlLabel control={<Checkbox value='PSQL' color='primary' />} label='PostgreSQL' onChange={handlePsqlCheck} />
-                                </Grid>
-                            </Grid>
+                            </Box>
                         </Grid>
                         <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
                             Sign Up
