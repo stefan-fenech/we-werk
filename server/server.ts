@@ -18,6 +18,7 @@ app.use(express.json());
 // Controller imports
 import usersController from './controllers/users/index';
 import sessionsController from './controllers/sessions/index';
+import jobsController from './controllers/jobs/index';
 
 app.use(
     cors({
@@ -60,6 +61,7 @@ run().catch(console.log);
 // Use Controllers
 app.use('/api/users', usersController);
 app.use('/api/session', sessionsController);
+app.use('/api/jobs', jobsController);
 // End Use controllers
 
 if (process.env.NODE_ENV === 'production') {

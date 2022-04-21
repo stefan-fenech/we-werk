@@ -7,6 +7,13 @@ import '@fontsource/roboto/700.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SignUp } from './components/SignUp';
 import { Dashboard } from './components/Dashboard';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+// const darkTheme = createTheme({
+//     palette: {
+//         mode: 'dark',
+//     },
+// });
 
 function App() {
     return (

@@ -2,6 +2,7 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import { MongoClient } from 'mongodb';
 import { request } from 'http';
+import { userInfo } from 'os';
 
 const router = express.Router();
 
@@ -31,8 +32,8 @@ router.post('/', (req, res) => {
 
     db.collection('users')
         .findOne({ email: `${email}` })
-        .then(({ password, ...user }: any) => {
-            const valid = user && bcrypt.compareSync(pw, password);
+        .then((user: any) => {
+            const valid = user && bcrypt.compareSync(pw, user.password);
             if (user.email === email && valid === true) {
                 req.session.email = email;
                 res.json(user);
