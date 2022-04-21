@@ -51,7 +51,7 @@ export function SignUp() {
                 },
             ],
         };
-        axios.post('http://localhost:3001/api/users', formBody).then(() => {
+        axios.post('/api/users', formBody).then(() => {
             navigate('/');
         });
     };

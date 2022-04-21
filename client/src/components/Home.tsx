@@ -20,7 +20,7 @@ export function Home(props: any) {
         if (password === '' || email === '') {
             return console.log('Empty fields');
         }
-        axios.post('http://localhost:3001/api/session', { email: email, password: password }, { withCredentials: true }).then((response) => {
+        axios.post('api/session/', { email: email, password: password }, { withCredentials: true }).then((response) => {
             if (response.data.email === email) {
                 console.log(response);
                 navigate('/dashboard');

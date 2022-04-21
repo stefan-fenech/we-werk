@@ -1,4 +1,4 @@
-import './App.css';
+import './style.css';
 import { Home } from './components/Home';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';

@@ -1,6 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import { MongoClient } from 'mongodb';
+import { request } from 'http';
 
 const router = express.Router();
 
@@ -39,6 +40,12 @@ router.post('/', (req, res) => {
                 res.json({ status: 'Incorrect details' });
             }
         });
+});
+
+router.get('/destroy', (req, res) => {
+    req.session.destroy(() => {});
+    res.clearCookie('connect.sid'); // clean up!
+    res.json({ message: 'logging you out' });
 });
 
 export default router;
