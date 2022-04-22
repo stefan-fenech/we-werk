@@ -22,8 +22,11 @@ export function Home(props: any) {
         }
         axios.post('api/session/', { email: email, password: password }, { withCredentials: true }).then((response) => {
             if (response.data.email === email) {
-                console.log(response);
-                navigate('/dashboard');
+                if (response.data.admin) {
+                    navigate('/admin');
+                } else {
+                    navigate('/dashboard');
+                }
             } else {
                 console.log('incorrect');
             }
@@ -32,14 +35,7 @@ export function Home(props: any) {
 
     return (
         <>
-            <div id='seeker-login'>
-                <h1>Work?</h1>
-                <Login handleEmail={handleEmail} handlePassword={handlePassword} onSubmit={onSubmit} />
-            </div>
-            <div id='poster-login'>
-                <h1>Workers?</h1>
-                <Login handleEmail={handleEmail} handlePassword={handlePassword} onSubmit={onSubmit} />
-            </div>
+            <Login handleEmail={handleEmail} handlePassword={handlePassword} onSubmit={onSubmit} />
         </>
     );
 }

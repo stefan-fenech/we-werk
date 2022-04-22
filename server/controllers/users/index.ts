@@ -40,4 +40,22 @@ router.post('/', (req: any, res: any) => {
         });
 });
 
+router.post('/admin', (req: any, res: any) => {
+    const user = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync()),
+        company: req.body.companyName,
+        admin: req.body.admin,
+    };
+
+    db.collection('users')
+        .insertOne(user)
+        .then((result: any) => {
+            console.log(result);
+            res.json({ status: 'New user added to database' });
+        });
+});
+
 export default router;
