@@ -32,6 +32,16 @@ router.get('/:id', (req: any, res: any) => {
         });
 });
 
+router.patch('/:id', (req, res) => {
+    const userID = req.body.id;
+    let id = req.params.id;
+    db.collection('jobs')
+        .updateOne({ _id: new ObjectId(id) }, { $push: { shortlist: `${userID}` } })
+        .then((result: any) => {
+            res.json(result);
+        });
+});
+
 router.post('/', (req: any, res: any) => {
     const job = {
         company: req.body.companyName,
@@ -39,6 +49,7 @@ router.post('/', (req: any, res: any) => {
         rate: req.body.rate,
         description: req.body.description,
         shortDesc: req.body.shortDesc,
+        posterID: req.body.posterID,
         skills: req.body.skills,
     };
 

@@ -1,7 +1,7 @@
 import { Button, Checkbox, Container, FormControlLabel, FormHelperText, Grid, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AdminNav from './AdminNav';
 
 export function PostJob(props: any) {
@@ -14,6 +14,16 @@ export function PostJob(props: any) {
     const [htmlCheck, setHtmlCheck] = useState(false);
     const [cssCheck, setCssCheck] = useState(false);
     const [typescriptCheck, setTypescriptCheck] = useState(false);
+    const [userID, setUserID] = useState('');
+
+    useEffect(() => {
+        axios
+            .get('/api/session', { withCredentials: true })
+            .then((response) => {
+                setUserID(response.data._id);
+            })
+            .finally(() => {});
+    }, []);
 
     const handleJsCheck = (event: any) => {
         setJsCheck(event.target.checked);
@@ -57,6 +67,7 @@ export function PostJob(props: any) {
             rate: data.get('rate'),
             description: data.get('description'),
             shortDesc: data.get('shortDesc'),
+            posterID: userID,
             skills: [
                 {
                     js: jsCheck,
