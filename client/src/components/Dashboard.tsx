@@ -7,7 +7,6 @@ import Navigation from './Navigation';
 export function Dashboard(props: any) {
     const navigate = useNavigate();
     const [user, setUser] = useState<any>(null);
-    const [skills, setSkills] = useState<any>([]);
     const [jobs, setJobs] = useState<any>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -16,7 +15,6 @@ export function Dashboard(props: any) {
             .get('/api/session', { withCredentials: true })
             .then((response) => {
                 setUser(response.data);
-                setSkills(response.data.skills);
             })
             .finally(() => {
                 setLoading(false);
@@ -34,13 +32,6 @@ export function Dashboard(props: any) {
             });
     }, []);
 
-    const handleLogout = () => {
-        axios.get('/api/session/destroy', { withCredentials: true }).then((response) => {
-            const user = response.data.email;
-            navigate('/');
-        });
-    };
-
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -54,13 +45,12 @@ export function Dashboard(props: any) {
             <Navigation />
             <div>
                 <p>Dashboard for {user.email}</p>
-                <p> {(skills.js = true ? 'JS SKILLS' : '')}</p>
             </div>
             <h1 className='job-heading'> Jobs </h1>
             <div id='jobs'>
-                {jobs.map((job: any) => (
+                {jobs.map((job: any, index: any) => (
                     <>
-                        <JobCard companyName={job.company} title={job.title} description={job.description} />
+                        <JobCard key={index} companyName={job.company} title={job.title} description={job.description} />
                     </>
                 ))}
             </div>

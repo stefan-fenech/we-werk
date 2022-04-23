@@ -1,8 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import { MongoClient } from 'mongodb';
-import { request } from 'http';
-import { userInfo } from 'os';
 
 const router = express.Router();
 
