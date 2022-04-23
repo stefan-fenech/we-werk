@@ -37,6 +37,9 @@ export function Login(props: any) {
                     <Button fullWidth variant='contained' onClick={props.onSubmit} sx={{ mt: 3, mb: 2 }}>
                         Sign In
                     </Button>
+                    <Link to='/signup' style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                        Don't have an account? Sign Up!
+                    </Link>
                 </Box>
                 <Grid container>
                     <Grid item xs></Grid>

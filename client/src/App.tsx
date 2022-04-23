@@ -11,6 +11,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { SignUpPoster } from './components/SignUpPoster';
 import { Admin } from './components/Admin';
 import { PostJob } from './components/PostJob';
+import { JobDetails } from './components/JobDetails';
 
 // const darkTheme = createTheme({
 //     palette: {
@@ -29,6 +30,7 @@ function App() {
                     <Route path='/dashboard' element={<Dashboard />} />
                     <Route path='/admin' element={<Admin />} />
                     <Route path='/post-job' element={<PostJob />} />
+                    <Route path='/job/:id' element={<JobDetails />} />
                 </Routes>
             </BrowserRouter>
         </div>

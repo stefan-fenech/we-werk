@@ -11,10 +11,18 @@
 
 #jobs {
     display: flex;
-    justify-content: center;
+    width: 70%;
+    margin: 0 auto;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .job-heading {
     text-align: center;
+}
+
+#job-post-container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
 }

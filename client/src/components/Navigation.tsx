@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import PersonIcon from '@mui/icons-material/Person';
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const darkTheme = createTheme({
@@ -92,7 +92,16 @@ const Navigation = () => {
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             {pages.map((page) => (
                                 <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
-                                    {page}
+                                    {page === 'Home' && (
+                                        <Link to='/dashboard' style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                                            {page}
+                                        </Link>
+                                    )}
+                                    {page === 'Jobs' && (
+                                        <Link to='/dashboard' style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                                            {page}
+                                        </Link>
+                                    )}
                                 </Button>
                             ))}
                         </Box>

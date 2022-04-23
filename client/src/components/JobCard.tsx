@@ -10,26 +10,31 @@ import jsLogo from '../images/jsLogo.png';
 export interface JobCardProps {
     companyName: string;
     title: string;
-    description: string;
+    rate: string;
+    id: string;
+    shortDesc: string;
 }
 
 export function JobCard(props: JobCardProps) {
     return (
-        <Card sx={{ minWidth: 300 }}>
+        <Card sx={{ width: 300 }}>
             <CardMedia component='img' height='140' image={jsLogo} />
             <CardContent>
-                <Typography gutterBottom variant='h5' component='div'>
+                <Typography variant='h5' component='div'>
                     {props.companyName}
                 </Typography>
-                <Typography sx={{ mb: 1.5 }} color='text.secondary'>
-                    {props.title}
+                <Typography color='text.secondary'>{props.title}</Typography>
+                <Typography variant='overline' color='text.secondary'>
+                    {props.rate} AUD
                 </Typography>
                 <Typography variant='body2' color='text.secondary'>
-                    {props.description}
+                    {props.shortDesc}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size='small'>Details</Button>
+                <Link to={`/job/${props.id}`}>
+                    <Button size='small'>Details</Button>
+                </Link>
             </CardActions>
         </Card>
     );

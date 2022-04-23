@@ -43,14 +43,11 @@ export function Dashboard(props: any) {
     return (
         <>
             <Navigation />
-            <div>
-                <p>Dashboard for {user.email}</p>
-            </div>
             <h1 className='job-heading'> Jobs </h1>
             <div id='jobs'>
                 {jobs.map((job: any, index: any) => (
                     <>
-                        <JobCard key={index} companyName={job.company} title={job.title} description={job.description} />
+                        <JobCard key={index} companyName={job.company} title={job.title} shortDesc={job.shortDesc} rate={job.rate} id={job._id} />
                     </>
                 ))}
             </div>
