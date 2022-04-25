@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AdminNav from './AdminNav';
+import { JobCardAdmin } from './JobCardAdmin';
 
 export function Admin(props: any) {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ export function Admin(props: any) {
             <AdminNav />
             <p>Admin</p>
             {jobs.map((result: any) => (
-                <p>{result.posterID === userID ? result.title : ''}</p>
+                <p>{result.posterID === userID && result.shortlist.length > 0 && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} />} </p>
             ))}
         </>
     );

@@ -51,6 +51,7 @@ router.post('/', (req: any, res: any) => {
         shortDesc: req.body.shortDesc,
         posterID: req.body.posterID,
         skills: req.body.skills,
+        shortlist: [],
     };
 
     db.collection('jobs')

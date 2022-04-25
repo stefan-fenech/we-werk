@@ -25,7 +25,7 @@ export function JobCard(props: JobCardProps) {
                 </Typography>
                 <Typography color='text.secondary'>{props.title}</Typography>
                 <Typography variant='overline' color='text.secondary'>
-                    {props.rate} AUD
+                    {`$${props.rate}`} AUD DAILY
                 </Typography>
                 <Typography variant='body2' color='text.secondary'>
                     {props.shortDesc}
