@@ -30,7 +30,7 @@ export function JobCardAdmin(props: JobCardAdminProps) {
                         <Typography variant='body2'>You have {props.shortlist} shortlisted candidates to view.</Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size='small'>Learn More</Button>
+                        <Button size='small'>View Applicants</Button>
                     </CardActions>
                 </Card>
             </Box>
