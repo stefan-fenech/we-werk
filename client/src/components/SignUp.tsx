@@ -95,7 +95,7 @@ export function SignUp() {
             <ThemeProvider theme={theme}>
                 <Container component='main' maxWidth='xs' sx={{ backgroundColor: '#f5f5f5', padding: 2, borderRadius: 5, justifyContent: 'center' }}>
                     <div id='logo'>
-                        <img src={logo} height='160px' />
+                        <img src={logo} height='100px' />
                     </div>
                     <CssBaseline />
                     <Box
