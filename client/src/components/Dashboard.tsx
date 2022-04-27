@@ -1,4 +1,4 @@
-import { Snackbar, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,7 @@ export function Dashboard(props: any) {
     const [user, setUser] = useState<any>(null);
     const [jobs, setJobs] = useState<any>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [applied, setApplied] = useState<boolean>(false);
 
     useEffect(() => {
         axios
@@ -50,7 +51,7 @@ export function Dashboard(props: any) {
             <div id='jobs'>
                 {jobs.map((job: any, index: any) => (
                     <>
-                        <JobCard key={index} companyName={job.company} title={job.title} shortDesc={job.shortDesc} rate={job.rate} id={job._id} />
+                        <JobCard key={index} companyName={job.company} title={job.title} shortDesc={job.shortDesc} rate={job.rate} id={job._id} applied={applied} />
                     </>
                 ))}
             </div>

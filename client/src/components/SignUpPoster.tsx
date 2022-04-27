@@ -36,7 +36,7 @@ export function SignUpPoster() {
     return (
         <div id='sign-up-client'>
             <ThemeProvider theme={theme}>
-                <Container component='main' maxWidth='xs'>
+                <Container component='main' maxWidth='xs' sx={{ backgroundColor: '#f5f5f5', padding: 2, borderRadius: 5, justifyContent: 'center' }}>
                     <div id='logo'>
                         <img src={logo} height='160px' />
                     </div>

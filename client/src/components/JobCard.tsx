@@ -6,10 +6,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import data from '../images/data.png';
-import jsLogo from '../images/jsLogo.png';
 import software from '../images/software.png';
 import security from '../images/security.png';
 import cloud from '../images/cloud.png';
+import { Chip } from '@mui/material';
 
 export interface JobCardProps {
     companyName: string;
@@ -17,6 +17,7 @@ export interface JobCardProps {
     rate: string;
     id: string;
     shortDesc: string;
+    applied: boolean;
 }
 
 export function JobCard(props: JobCardProps) {
@@ -34,9 +35,10 @@ export function JobCard(props: JobCardProps) {
                 <Typography variant='overline' color='text.secondary'>
                     {`$${props.rate}`} AUD DAILY
                 </Typography>
-                <Typography variant='body2' color='text.secondary'>
+                <Typography variant='body2' color='text.secondary' gutterBottom>
                     {props.shortDesc}
                 </Typography>
+                {props.applied === true && <Chip label='Applied' color='success' />}
             </CardContent>
             <CardActions>
                 <Link to={`/job/${props.id}`}>

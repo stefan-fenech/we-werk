@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navigation from './Navigation';
 import CheckIcon from '@mui/icons-material/Check';
-import { AlertSnackbar } from './AlertSnackbar';
 
 export function JobDetails(props: any) {
     const [jobs, setJobs] = useState<any>([]);

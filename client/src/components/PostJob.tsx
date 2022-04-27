@@ -16,6 +16,7 @@ export function PostJob(props: any) {
     const [cssCheck, setCssCheck] = useState(false);
     const [typescriptCheck, setTypescriptCheck] = useState(false);
     const [userID, setUserID] = useState('');
+    const [error, setError] = useState(false);
     const [buttonAction, setButtonAction] = useState<any>({
         color: 'primary',
         message: `Post Job`,
@@ -94,40 +95,43 @@ export function PostJob(props: any) {
     return (
         <>
             <AdminNav />
-            <Container component='main' maxWidth='md'>
+            <Container component='main' maxWidth='sm'>
                 <Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                     <Typography variant='h4'>Post new job</Typography>
-                    <TextField fullWidth id='standard-basic' name='companyName' label='Company Name' variant='standard' margin='normal' />
-                    <TextField fullWidth id='standard-basic' name='title' label='Job Title' variant='standard' margin='normal' />
-                    <TextField fullWidth id='standard-basic' name='rate' label='Daily Rate in $AUD' variant='standard' margin='normal' />
-                    <TextField fullWidth id='standard-basic' inputProps={{ maxLength: 50 }} name='shortDesc' label='Short Description (limit of 50 characters)' variant='standard' margin='normal' />
+                    <TextField fullWidth id='standard-basic' name='companyName' label='Company Name' variant='outlined' margin='normal' />
+                    <TextField fullWidth id='standard-basic' name='title' label='Job Title' variant='outlined' margin='normal' />
+                    <TextField fullWidth id='standard-basic' name='rate' label='Daily Rate in $AUD' variant='outlined' margin='normal' />
+                    <TextField fullWidth id='standard-basic' inputProps={{ maxLength: 50 }} name='shortDesc' label='Short Description (limit of 50 characters)' variant='outlined' margin='normal' />
                     <TextField fullWidth id='outline-multiline-static' name='description' label='Job Description' multiline rows={20} margin='normal' />
+                    <Typography variant='h5' gutterBottom>
+                        Technical Skills Required
+                    </Typography>
                     <Grid container spacing={0.5} margin='normal'>
-                        <Grid item xs={2}>
+                        <Grid item xs>
                             <FormControlLabel control={<Checkbox value='JS' color='primary' />} label='JavaScript' id='js' onChange={handleJsCheck} />
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs>
                             <FormControlLabel control={<Checkbox value='Node' color='primary' />} label='NodeJS' onChange={handleNodeCheck} />
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs>
                             <FormControlLabel control={<Checkbox value='React' color='primary' />} label='React' onChange={handleReactCheck} />
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs>
                             <FormControlLabel control={<Checkbox value='Python' color='primary' />} label='Python' onChange={handlePythonCheck} />
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs>
                             <FormControlLabel control={<Checkbox value='PSQL' color='primary' />} label='PostgreSQL' onChange={handlePsqlCheck} />
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs>
                             <FormControlLabel control={<Checkbox value='mongo' color='primary' />} label='MongoDB' onChange={handleMongoCheck} />
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs>
                             <FormControlLabel control={<Checkbox value='html' color='primary' />} label='HTML' onChange={handleHtmlCheck} />
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs>
                             <FormControlLabel control={<Checkbox value='css' color='primary' />} label='CSS' onChange={handleCssCheck} />
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs>
                             <FormControlLabel control={<Checkbox value='typescript' color='primary' />} label='TypeScript' onChange={handleTypescriptCheck} />
                         </Grid>
                     </Grid>

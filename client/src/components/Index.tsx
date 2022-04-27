@@ -1,9 +1,6 @@
-import { Fab, Grid, ListItem } from '@mui/material';
-import candidate from '../images/candidate.png';
-import client from '../images/client.png';
+import cover from '../images/cover2.png';
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png';
-import { Sign } from 'crypto';
 import { SignIn } from './SignIn';
 import { useState } from 'react';
 import axios from 'axios';
@@ -11,6 +8,8 @@ import axios from 'axios';
 export function Index(props: any) {
     const [email, setemail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(false);
+
     const navigate = useNavigate();
 
     const handleEmail = (event: any) => {
@@ -23,7 +22,7 @@ export function Index(props: any) {
 
     const onSubmit = () => {
         if (password === '' || email === '') {
-            return console.log('Empty fields');
+            return setError(true);
         }
         axios.post('api/session/', { email: email, password: password }, { withCredentials: true }).then((response) => {
             if (response.data.email === email) {
@@ -33,31 +32,19 @@ export function Index(props: any) {
                     navigate('/dashboard');
                 }
             } else {
-                console.log('incorrect');
+                setError(true);
             }
         });
     };
 
     return (
         <>
-            <div id='index'>
-                <div id='logo'>
-                    <img src={logo} height='180px' />
-                </div>
-            </div>
             <div id='login-container'>
                 <div id='candidate-login'>
-                    <SignIn handleEmail={handleEmail} handlePassword={handlePassword} onSubmit={onSubmit} />
-                    {/* <img src={candidate} height='350px' />
-                    <Fab variant='extended' size='medium' color='primary' aria-label='add' sx={{ width: '60%' }} onClick={handleClick}>
-                        Candidate Login
-                    </Fab> */}
+                    <SignIn handleEmail={handleEmail} handlePassword={handlePassword} onSubmit={onSubmit} error={error} />
                 </div>
                 <div id='client-login'>
-                    <img src={client} height='350px' />
-                    {/* <Fab variant='extended' size='medium' color='primary' aria-label='add' sx={{ width: '60%' }} onClick={handleClick}>
-                        Client Login
-                    </Fab> */}
+                    <img src={cover} height='500px' />
                 </div>
             </div>
         </>
