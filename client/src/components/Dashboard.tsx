@@ -1,3 +1,4 @@
+import { Snackbar, Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -41,9 +42,11 @@ export function Dashboard(props: any) {
     }
 
     return (
-        <>
+        <div id='dashboard'>
             <Navigation />
-            <h1 className='job-heading'> Jobs </h1>
+            <Typography variant='h4' sx={{ m: 2, textAlign: 'center' }}>
+                {user.firstName} {user.lastName}'s Job Dashboard
+            </Typography>
             <div id='jobs'>
                 {jobs.map((job: any, index: any) => (
                     <>
@@ -51,6 +54,6 @@ export function Dashboard(props: any) {
                     </>
                 ))}
             </div>
-        </>
+        </div>
     );
 }

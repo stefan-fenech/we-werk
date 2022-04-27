@@ -1,8 +1,9 @@
-import { Button, Checkbox, Container, FormControlLabel, FormHelperText, Grid, TextField } from '@mui/material';
+import { Button, Checkbox, Container, Fab, FormControlLabel, FormHelperText, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import AdminNav from './AdminNav';
+import CheckIcon from '@mui/icons-material/Check';
 
 export function PostJob(props: any) {
     const [jsCheck, setJsCheck] = useState(false);
@@ -15,6 +16,10 @@ export function PostJob(props: any) {
     const [cssCheck, setCssCheck] = useState(false);
     const [typescriptCheck, setTypescriptCheck] = useState(false);
     const [userID, setUserID] = useState('');
+    const [buttonAction, setButtonAction] = useState<any>({
+        color: 'primary',
+        message: `Post Job`,
+    });
 
     useEffect(() => {
         axios
@@ -82,14 +87,16 @@ export function PostJob(props: any) {
                 },
             ],
         };
-        axios.post('/api/jobs', formBody).then(() => {});
+        axios.post('/api/jobs', formBody).then(() => {
+            setButtonAction({ color: 'success', message: 'Job posted!' });
+        });
     };
     return (
         <>
             <AdminNav />
             <Container component='main' maxWidth='md'>
                 <Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-                    <h1>Post a job</h1>
+                    <Typography variant='h4'>Post new job</Typography>
                     <TextField fullWidth id='standard-basic' name='companyName' label='Company Name' variant='standard' margin='normal' />
                     <TextField fullWidth id='standard-basic' name='title' label='Job Title' variant='standard' margin='normal' />
                     <TextField fullWidth id='standard-basic' name='rate' label='Daily Rate in $AUD' variant='standard' margin='normal' />
@@ -124,9 +131,13 @@ export function PostJob(props: any) {
                             <FormControlLabel control={<Checkbox value='typescript' color='primary' />} label='TypeScript' onChange={handleTypescriptCheck} />
                         </Grid>
                     </Grid>
-                    <Button type='submit' sx={{ mt: 2 }} variant='outlined'>
+                    {/* <Button type='submit' sx={{ mt: 2 }} variant='outlined'>
                         Post Job
-                    </Button>
+                    </Button> */}
+                    <Fab variant='extended' size='medium' color={buttonAction.color} aria-label='add' sx={{ width: '40%', mb: 2, mt: 2 }} type='submit'>
+                        <CheckIcon sx={{ mr: 1 }} />
+                        {buttonAction.message}
+                    </Fab>
                 </Box>
             </Container>
         </>

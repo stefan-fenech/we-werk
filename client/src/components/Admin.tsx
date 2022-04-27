@@ -1,4 +1,4 @@
-import { Newspaper, RepeatOneSharp } from '@mui/icons-material';
+import { Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -9,10 +9,12 @@ export function Admin(props: any) {
     const navigate = useNavigate();
     const [userID, setUserID] = useState<any>('');
     const [jobs, setJobs] = useState<any>([]);
+    const [userData, setUserData] = useState<any>('');
 
     useEffect(() => {
         axios.get('/api/session', { withCredentials: true }).then((response) => {
             setUserID(response.data._id);
+            setUserData(response.data);
         });
     }, []);
 
@@ -27,10 +29,14 @@ export function Admin(props: any) {
     return (
         <>
             <AdminNav />
-            <p>Admin</p>
-            {jobs.map((result: any) => (
-                <p>{result.posterID === userID && result.shortlist.length > 0 && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} />} </p>
-            ))}
+            <Typography variant='h4' sx={{ mt: 2, textAlign: 'center' }}>
+                {userData.company}'s Active Jobs
+            </Typography>
+            <div id='jobs'>
+                {jobs.map((result: any) => (
+                    <p>{result.posterID === userID && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} />} </p>
+                ))}
+            </div>
         </>
     );
 }
