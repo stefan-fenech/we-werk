@@ -14,10 +14,16 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import logo2 from '../images/logo2.png';
 
-const darkTheme = createTheme({
+const customTheme = createTheme({
     palette: {
-        mode: 'dark',
+        primary: {
+            main: '#345c72',
+        },
+        secondary: {
+            main: '#d4edf4',
+        },
     },
 });
 
@@ -52,12 +58,12 @@ const AdminNav = () => {
     };
 
     return (
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={customTheme}>
             <AppBar position='static'>
                 <Container maxWidth='xl'>
                     <Toolbar disableGutters>
                         <Typography variant='h6' noWrap component='div' sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
-                            WERK I.T
+                            <img src={logo2} height='50px' />
                         </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

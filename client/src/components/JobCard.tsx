@@ -5,7 +5,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import data from '../images/data.png';
 import jsLogo from '../images/jsLogo.png';
+import software from '../images/software.png';
+import security from '../images/security.png';
+import cloud from '../images/cloud.png';
 
 export interface JobCardProps {
     companyName: string;
@@ -18,7 +22,10 @@ export interface JobCardProps {
 export function JobCard(props: JobCardProps) {
     return (
         <Card sx={{ width: 300 }}>
-            <CardMedia component='img' height='140' image={jsLogo} />
+            {(props.title.includes('Security') && <CardMedia component='img' height='140' image={security} />) ||
+                (props.title.includes('Data') && <CardMedia component='img' height='140' image={data} />) ||
+                (props.title.includes('Software') && <CardMedia component='img' height='140' image={software} />) ||
+                (props.title.includes('Cloud') && <CardMedia component='img' height='140' image={cloud} />)}
             <CardContent>
                 <Typography variant='h5' component='div'>
                     {props.companyName}

@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../images/logo.png';
 
 const theme = createTheme();
 
@@ -91,88 +92,92 @@ export function SignUp() {
     };
 
     return (
-        <ThemeProvider theme={theme}>
-            <Container component='main' maxWidth='xs'>
-                <CssBaseline />
-                <Box
-                    sx={{
-                        marginTop: 8,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}>
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
-                    <Typography component='h1' variant='h5'>
-                        Sign up
-                    </Typography>
-                    <Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <TextField autoComplete='given-name' name='firstName' required fullWidth id='firstName' label='First Name' autoFocus />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <TextField required fullWidth id='lastName' label='Last Name' name='lastName' autoComplete='family-name' />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField required fullWidth id='email' label='Email Address' name='email' autoComplete='email' />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField required fullWidth name='password' label='Password' type='password' id='password' autoComplete='new-password' />
-                            </Grid>
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    padding: '5px',
-                                }}>
-                                <Typography component='h2' variant='h6'>
-                                    Technical skills:
-                                </Typography>
-                                <Grid container spacing={0.5} columns={12}>
-                                    <Grid item xs={4}>
-                                        <FormControlLabel control={<Checkbox value='JS' color='primary' />} label='JavaScript' id='js' onChange={handleJsCheck} />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <FormControlLabel control={<Checkbox value='Node' color='primary' />} label='NodeJS' onChange={handleNodeCheck} />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <FormControlLabel control={<Checkbox value='React' color='primary' />} label='React' onChange={handleReactCheck} />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <FormControlLabel control={<Checkbox value='Python' color='primary' />} label='Python' onChange={handlePythonCheck} />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <FormControlLabel control={<Checkbox value='PSQL' color='primary' />} label='PostgreSQL' onChange={handlePsqlCheck} />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <FormControlLabel control={<Checkbox value='mongo' color='primary' />} label='MongoDB' onChange={handleMongoCheck} />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <FormControlLabel control={<Checkbox value='html' color='primary' />} label='HTML' onChange={handleHtmlCheck} />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <FormControlLabel control={<Checkbox value='css' color='primary' />} label='CSS' onChange={handleCssCheck} />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <FormControlLabel control={<Checkbox value='typescript' color='primary' />} label='TypeScript' onChange={handleTypescriptCheck} />
-                                    </Grid>
+        <div id='signUp-container'>
+            <ThemeProvider theme={theme}>
+                <Container component='main' maxWidth='xs'>
+                    <div id='logo'>
+                        <img src={logo} height='160px' />
+                    </div>
+                    <CssBaseline />
+                    <Box
+                        sx={{
+                            marginTop: 2,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                        }}>
+                        <Typography component='h1' variant='h5'>
+                            Sign up
+                        </Typography>
+                        <Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField autoComplete='given-name' name='firstName' required fullWidth id='firstName' label='First Name' autoFocus />
                                 </Grid>
-                            </Box>
-                        </Grid>
-                        <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
-                            Sign Up
-                        </Button>
-                        <Grid container justifyContent='flex-end'>
-                            <Grid item>
-                                <Link to='/' style={{ color: 'inherit', textDecoration: 'inherit' }}>
-                                    Already have an account? Sign in
-                                </Link>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField required fullWidth id='lastName' label='Last Name' name='lastName' autoComplete='family-name' />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField required fullWidth id='email' label='Email Address' name='email' autoComplete='email' />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField required fullWidth name='password' label='Password' type='password' id='password' autoComplete='new-password' />
+                                </Grid>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        padding: '5px',
+                                    }}>
+                                    <Typography component='h2' variant='h6'>
+                                        Technical skills:
+                                    </Typography>
+                                    <Grid container spacing={0.5} columns={12}>
+                                        <Grid item xs={4}>
+                                            <FormControlLabel control={<Checkbox value='JS' color='primary' />} label='JavaScript' id='js' onChange={handleJsCheck} />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <FormControlLabel control={<Checkbox value='Node' color='primary' />} label='NodeJS' onChange={handleNodeCheck} />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <FormControlLabel control={<Checkbox value='React' color='primary' />} label='React' onChange={handleReactCheck} />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <FormControlLabel control={<Checkbox value='Python' color='primary' />} label='Python' onChange={handlePythonCheck} />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <FormControlLabel control={<Checkbox value='PSQL' color='primary' />} label='PostgreSQL' onChange={handlePsqlCheck} />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <FormControlLabel control={<Checkbox value='mongo' color='primary' />} label='MongoDB' onChange={handleMongoCheck} />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <FormControlLabel control={<Checkbox value='html' color='primary' />} label='HTML' onChange={handleHtmlCheck} />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <FormControlLabel control={<Checkbox value='css' color='primary' />} label='CSS' onChange={handleCssCheck} />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <FormControlLabel control={<Checkbox value='typescript' color='primary' />} label='TypeScript' onChange={handleTypescriptCheck} />
+                                        </Grid>
+                                    </Grid>
+                                </Box>
                             </Grid>
-                        </Grid>
+                            <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
+                                Sign Up
+                            </Button>
+                            <Grid container justifyContent='flex-end'>
+                                <Grid item>
+                                    <Link to='/' style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                                        Already have an account? Sign in
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                        </Box>
                     </Box>
-                </Box>
-            </Container>
-        </ThemeProvider>
+                </Container>
+            </ThemeProvider>
+        </div>
     );
 }

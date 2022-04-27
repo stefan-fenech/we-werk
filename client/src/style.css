@@ -1,6 +1,8 @@
-/* :root {
-    background-color: #eeeeee;
-} */
+.App {
+    background-color: #d4edf4;
+    height: 100vh;
+    background-size : cover;
+}
 
 #dashboard-nav {
     display: flex;
@@ -9,12 +11,19 @@
     padding-top: 10px;
 }
 
+#logo {
+    display: flex;
+    justify-content: center;
+}
+
 #jobs {
     display: flex;
     width: 70%;
     margin: 0 auto;
     gap: 20px;
     flex-wrap: wrap;
+    padding-bottom: 30px;
+    justify-content: center;
 }
 
 .job-heading {
@@ -25,4 +34,85 @@
     display: flex;
     margin: 0 auto;
     justify-content: center;
+}
+
+#main-container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    align-content: center;
+    background-color: #d4edf4;
+    /* background: linear-gradient(to left, #345c72 50%, #d4edf4 50%); */
+}
+
+#index {
+        background-color: #d4edf4;
+}
+
+#login-container {
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        gap: 40px;
+        background-color: #d4edf4;  
+}
+
+#candidate-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+#client-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+#signIn-container {
+    background-color: #d4edf4;
+    height: 100vh;
+    width: 100vw;
+}
+
+#signUp-container {
+    background-color: #d4edf4;
+    height: 100vh;
+    width: 100vw;
+}
+
+#dashboard {
+    background-color: #d4edf4;
+    height: 100vh;
+}   
+
+#sign-up-client {
+    background-color: #d4edf4;
+    height: 100vh;
+    width: 100vw;
+}
+
+#job-details {
+    display: flex;
+    width: 50vw;
+    margin: 0 auto;
+    margin-top: 15px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #e3e3e3e3;
+    border-radius: 20px;
+}
+
+#shortlist-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding-bottom: 10px;   
 }
