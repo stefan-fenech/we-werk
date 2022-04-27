@@ -16,7 +16,8 @@ export function PostJob(props: any) {
     const [cssCheck, setCssCheck] = useState(false);
     const [typescriptCheck, setTypescriptCheck] = useState(false);
     const [userID, setUserID] = useState('');
-    const [error, setError] = useState(false);
+    const [skillArray, setSkillArray] = useState<any>([]);
+
     const [buttonAction, setButtonAction] = useState<any>({
         color: 'primary',
         message: `Post Job`,
@@ -33,37 +34,48 @@ export function PostJob(props: any) {
 
     const handleJsCheck = (event: any) => {
         setJsCheck(event.target.checked);
+        setSkillArray([...skillArray, 'js']);
     };
     const handleNodeCheck = (event: any) => {
         setNodeCheck(event.target.checked);
+        setSkillArray([...skillArray, 'node']);
     };
 
     const handleReactCheck = (event: any) => {
         setReactCheck(event.target.checked);
+        setSkillArray([...skillArray, 'react']);
     };
+
     const handlePythonCheck = (event: any) => {
         setPythonCheck(event.target.checked);
+        setSkillArray([...skillArray, 'python']);
     };
 
     const handlePsqlCheck = (event: any) => {
         setPsqlCheck(event.target.checked);
+        setSkillArray([...skillArray, 'psql']);
     };
 
     const handleMongoCheck = (event: any) => {
         setMongoCheck(event.target.checked);
+        setSkillArray([...skillArray, 'mongo']);
     };
 
     const handleHtmlCheck = (event: any) => {
         setHtmlCheck(event.target.checked);
+        setSkillArray([...skillArray, 'html']);
     };
 
     const handleCssCheck = (event: any) => {
         setCssCheck(event.target.checked);
+        setSkillArray([...skillArray, 'css']);
     };
 
     const handleTypescriptCheck = (event: any) => {
         setTypescriptCheck(event.target.checked);
+        setSkillArray([...skillArray, 'ts']);
     };
+
     const handleSubmit = (event: any) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -74,19 +86,7 @@ export function PostJob(props: any) {
             description: data.get('description'),
             shortDesc: data.get('shortDesc'),
             posterID: userID,
-            skills: [
-                {
-                    js: jsCheck,
-                    node: nodeCheck,
-                    react: reactCheck,
-                    python: pythonCheck,
-                    psql: psqlCheck,
-                    mongo: mongoCheck,
-                    html: htmlCheck,
-                    css: cssCheck,
-                    typescript: typescriptCheck,
-                },
-            ],
+            skills: skillArray.sort(),
         };
         axios.post('/api/jobs', formBody).then(() => {
             setButtonAction({ color: 'success', message: 'Job posted!' });
