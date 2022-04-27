@@ -48,7 +48,7 @@ declare module 'express-session' {
 // End Sessions info
 
 // Start MongoDB connection
-const uri = 'mongodb://127.0.0.1:27017';
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 let db = null;
 async function run() {
