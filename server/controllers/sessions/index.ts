@@ -32,6 +32,9 @@ router.post('/', (req, res) => {
         .findOne({ email: `${email}` })
         .then((user: any) => {
             const valid = user && bcrypt.compareSync(pw, user.password);
+            if (user.email === null) {
+                return res.json({ message: "User doesn't exist" });
+            }
             if (user.email === email && valid === true) {
                 req.session.email = email;
                 res.json(user);

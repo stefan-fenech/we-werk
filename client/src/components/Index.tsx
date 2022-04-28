@@ -1,6 +1,5 @@
 import cover from '../images/cover2.png';
 import { useNavigate } from 'react-router-dom';
-import logo from '../images/logo.png';
 import { SignIn } from './SignIn';
 import { useState } from 'react';
 import axios from 'axios';
@@ -25,6 +24,7 @@ export function Index(props: any) {
             return setError(true);
         }
         axios.post('api/session/', { email: email, password: password }, { withCredentials: true }).then((response) => {
+            console.log(response);
             if (response.data.email === email) {
                 if (response.data.admin) {
                     navigate('/admin');

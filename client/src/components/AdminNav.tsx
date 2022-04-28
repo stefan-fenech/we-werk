@@ -27,7 +27,7 @@ const customTheme = createTheme({
     },
 });
 
-const pages = ['Home', 'Post Job', 'Live Jobs'];
+const pages = ['Home', 'Post Job'];
 const settings = ['Logout'];
 
 const AdminNav = () => {

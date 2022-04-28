@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import AdminNav from './AdminNav';
 import BasicModal from './BasicModal';
+import ClickableChip from './ClickableChip';
 import { JobCardAdmin } from './JobCardAdmin';
 
 export function Admin(props: any) {
@@ -31,7 +32,6 @@ export function Admin(props: any) {
             let data = response.data;
             let newState = data.map((result: any) => result);
             setJobs(newState);
-            console.log(jobs);
         });
     }, []);
 
@@ -42,18 +42,19 @@ export function Admin(props: any) {
                 {userData.company}'s Active Jobs
             </Typography>
             <div id='jobs'>
-                {jobs.map((result: any) => (
+                {jobs.map((result: any, index: any) => (
                     <>
-                        <p>
+                        <p key={index}>
                             {result.posterID === userID && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} clickModal={handleModalOpen} />}
                             <BasicModal
+                                key={index}
                                 handleClose={handleModalClose}
                                 open={modalVisible}
                                 handleModalOpen={handleModalOpen}
-                                candidates={result.shortlist.map((candidate: any) => {
+                                candidates={result.shortlist.map((candidate: any, index: any) => {
                                     return (
-                                        <p>
-                                            {candidate.name} {candidate.last} {candidate.email}
+                                        <p key={index}>
+                                            {candidate.name} {candidate.last} - {candidate.email} - <ClickableChip />
                                         </p>
                                     );
                                 })}
@@ -61,7 +62,6 @@ export function Admin(props: any) {
                         </p>
                     </>
                 ))}
-                {/* <BasicModal handleClose={handleModalClose} open={modalVisible} handleModalOpen={handleModalOpen} /> */}
             </div>
         </>
     );
