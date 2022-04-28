@@ -10,15 +10,15 @@ export function Admin(props: any) {
     const [userID, setUserID] = useState<any>('');
     const [jobs, setJobs] = useState<any>([]);
     const [userData, setUserData] = useState<any>('');
-    const [modalVisible, setModalVisible] = useState<boolean>(false);
+    // const [modalVisible, setModalVisible] = useState<boolean>(false);
 
-    const handleModalOpen = () => {
-        setModalVisible(true);
-    };
+    // const handleModalOpen = () => {
+    //     setModalVisible(true);
+    // };
 
-    const handleModalClose = () => {
-        setModalVisible(false);
-    };
+    // const handleModalClose = () => {
+    //     setModalVisible(false);
+    // };
 
     useEffect(() => {
         axios.get('/api/session', { withCredentials: true }).then((response) => {
@@ -44,22 +44,7 @@ export function Admin(props: any) {
             <div id='jobs'>
                 {jobs.map((result: any, index: any) => (
                     <>
-                        <p key={index}>
-                            {result.posterID === userID && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} clickModal={handleModalOpen} />}
-                            <BasicModal
-                                key={index}
-                                handleClose={handleModalClose}
-                                open={modalVisible}
-                                handleModalOpen={handleModalOpen}
-                                candidates={result.shortlist.map((candidate: any, index: any) => {
-                                    return (
-                                        <p key={index}>
-                                            {candidate.name} {candidate.last} - {candidate.email} - <ClickableChip />
-                                        </p>
-                                    );
-                                })}
-                            />
-                        </p>
+                        <p key={index}>{result.posterID === userID && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} result={result} />}</p>
                     </>
                 ))}
             </div>

@@ -23,7 +23,7 @@ export default function BasicModal(props: any) {
                         Candidate Shortlist
                     </Typography>
                     <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-                        {props.candidates}
+                        {props.candidates.length <= 0 ? 'No candidates have applied to this job yet.' : props.candidates}
                     </Typography>
                 </Box>
             </Modal>
