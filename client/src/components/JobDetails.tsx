@@ -7,7 +7,7 @@ import CheckIcon from '@mui/icons-material/Check';
 
 export function JobDetails(props: any) {
     const [jobs, setJobs] = useState<any>([]);
-    const [userID, setUserID] = useState<any>('');
+    const [user, setUser] = useState<any>('');
     const [buttonAction, setButtonAction] = useState<any>({
         color: 'primary',
         message: `I'm Interested`,
@@ -23,12 +23,12 @@ export function JobDetails(props: any) {
 
     useEffect(() => {
         axios.get(`/api/session`, { withCredentials: true }).then((response) => {
-            setUserID(response.data._id);
+            setUser(response.data);
         });
-    }, [userID]);
+    }, [user]);
 
     const handleShortlist = () => {
-        axios.patch(`/api/jobs/${id}`, { id: userID }, { withCredentials: true }).then(() => {
+        axios.patch(`/api/jobs/${id}`, user, { withCredentials: true }).then(() => {
             setButtonAction({ color: 'success', message: 'Successfully applied!' });
         });
     };

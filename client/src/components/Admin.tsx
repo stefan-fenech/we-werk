@@ -31,6 +31,7 @@ export function Admin(props: any) {
             let data = response.data;
             let newState = data.map((result: any) => result);
             setJobs(newState);
+            console.log(jobs);
         });
     }, []);
 
@@ -43,10 +44,24 @@ export function Admin(props: any) {
             <div id='jobs'>
                 {jobs.map((result: any) => (
                     <>
-                        <p>{result.posterID === userID && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} clickModal={handleModalOpen} />} </p>
+                        <p>
+                            {result.posterID === userID && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} clickModal={handleModalOpen} />}
+                            <BasicModal
+                                handleClose={handleModalClose}
+                                open={modalVisible}
+                                handleModalOpen={handleModalOpen}
+                                candidates={result.shortlist.map((candidate: any) => {
+                                    return (
+                                        <p>
+                                            {candidate.name} {candidate.last} {candidate.email}
+                                        </p>
+                                    );
+                                })}
+                            />
+                        </p>
                     </>
                 ))}
-                <BasicModal handleClose={handleModalClose} open={modalVisible} handleModalOpen={handleModalOpen} />
+                {/* <BasicModal handleClose={handleModalClose} open={modalVisible} handleModalOpen={handleModalOpen} /> */}
             </div>
         </>
     );

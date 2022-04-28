@@ -23,8 +23,7 @@ export default function BasicModal(props: any) {
                         Candidate Shortlist
                     </Typography>
                     <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-                        <p>Stefan Fenech - stefan.fenech@live.com.au</p>
-                        <p>New User - user@gmail.com</p>
+                        <p>{props.candidates}</p>
                     </Typography>
                 </Box>
             </Modal>

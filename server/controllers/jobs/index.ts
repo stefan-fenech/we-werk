@@ -1,5 +1,5 @@
 import express from 'express';
-import _ from 'lodash';
+import _, { first } from 'lodash';
 import { MongoClient } from 'mongodb';
 import { ObjectId } from 'mongodb';
 
@@ -34,10 +34,13 @@ router.get('/:id', (req: any, res: any) => {
 });
 
 router.patch('/:id', (req, res) => {
-    const userID = req.body.id;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+
     let id = req.params.id;
     db.collection('jobs')
-        .updateOne({ _id: new ObjectId(id) }, { $push: { shortlist: `${userID}` } })
+        .updateOne({ _id: new ObjectId(id) }, { $push: { shortlist: { name: `${firstName}`, last: `${lastName}`, email: `${email}` } } })
         .then((result: any) => {
             res.json(result);
         });
@@ -61,10 +64,6 @@ router.post('/', (req: any, res: any) => {
             console.log(result);
             res.json({ status: 'New user added to database' });
         });
-});
-
-router.delete('/:id', (req, res) => {
-    console.log(req.body);
 });
 
 export default router;
