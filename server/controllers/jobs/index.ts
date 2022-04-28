@@ -1,4 +1,5 @@
 import express from 'express';
+import _ from 'lodash';
 import { MongoClient } from 'mongodb';
 import { ObjectId } from 'mongodb';
 
@@ -50,7 +51,7 @@ router.post('/', (req: any, res: any) => {
         description: req.body.description,
         shortDesc: req.body.shortDesc,
         posterID: req.body.posterID,
-        skills: req.body.skills,
+        skills: _.sortedUniq(req.body.skills),
         shortlist: [],
     };
 

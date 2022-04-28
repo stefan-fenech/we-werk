@@ -1,15 +1,23 @@
 import { Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import AdminNav from './AdminNav';
+import BasicModal from './BasicModal';
 import { JobCardAdmin } from './JobCardAdmin';
 
 export function Admin(props: any) {
-    const navigate = useNavigate();
     const [userID, setUserID] = useState<any>('');
     const [jobs, setJobs] = useState<any>([]);
     const [userData, setUserData] = useState<any>('');
+    const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+    const handleModalOpen = () => {
+        setModalVisible(true);
+    };
+
+    const handleModalClose = () => {
+        setModalVisible(false);
+    };
 
     useEffect(() => {
         axios.get('/api/session', { withCredentials: true }).then((response) => {
@@ -34,8 +42,11 @@ export function Admin(props: any) {
             </Typography>
             <div id='jobs'>
                 {jobs.map((result: any) => (
-                    <p>{result.posterID === userID && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} />} </p>
+                    <>
+                        <p>{result.posterID === userID && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} clickModal={handleModalOpen} />} </p>
+                    </>
                 ))}
+                <BasicModal handleClose={handleModalClose} open={modalVisible} handleModalOpen={handleModalOpen} />
             </div>
         </>
     );

@@ -50,6 +50,7 @@ export function SignUp() {
         setJsCheck(event.target.checked);
         setSkillArray([...skillArray, 'js']);
     };
+
     const handleNodeCheck = (event: any) => {
         setNodeCheck(event.target.checked);
         setSkillArray([...skillArray, 'node']);

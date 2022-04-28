@@ -1,5 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
+import _ from 'lodash';
 import { MongoClient } from 'mongodb';
 
 const router = express.Router();
@@ -29,7 +30,7 @@ router.post('/', (req: any, res: any) => {
         lastName: req.body.lastName,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync()),
-        skills: req.body.skills,
+        skills: _.sortedUniq(req.body.skills),
     };
 
     db.collection('users')

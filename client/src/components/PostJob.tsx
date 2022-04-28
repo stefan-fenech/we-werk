@@ -135,9 +135,6 @@ export function PostJob(props: any) {
                             <FormControlLabel control={<Checkbox value='typescript' color='primary' />} label='TypeScript' onChange={handleTypescriptCheck} />
                         </Grid>
                     </Grid>
-                    {/* <Button type='submit' sx={{ mt: 2 }} variant='outlined'>
-                        Post Job
-                    </Button> */}
                     <Fab variant='extended' size='medium' color={buttonAction.color} aria-label='add' sx={{ width: '40%', mb: 2, mt: 2 }} type='submit'>
                         <CheckIcon sx={{ mr: 1 }} />
                         {buttonAction.message}
