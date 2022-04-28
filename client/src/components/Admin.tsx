@@ -2,23 +2,12 @@ import { Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import AdminNav from './AdminNav';
-import BasicModal from './BasicModal';
-import ClickableChip from './ClickableChip';
 import { JobCardAdmin } from './JobCardAdmin';
 
 export function Admin(props: any) {
     const [userID, setUserID] = useState<any>('');
     const [jobs, setJobs] = useState<any>([]);
     const [userData, setUserData] = useState<any>('');
-    // const [modalVisible, setModalVisible] = useState<boolean>(false);
-
-    // const handleModalOpen = () => {
-    //     setModalVisible(true);
-    // };
-
-    // const handleModalClose = () => {
-    //     setModalVisible(false);
-    // };
 
     useEffect(() => {
         axios.get('/api/session', { withCredentials: true }).then((response) => {
