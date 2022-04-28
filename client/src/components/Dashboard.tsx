@@ -4,19 +4,21 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { JobCard } from './JobCard';
 import Navigation from './Navigation';
+import _ from 'lodash';
 
 export function Dashboard(props: any) {
     const navigate = useNavigate();
     const [user, setUser] = useState<any>(null);
+    const [skills, setSkills] = useState<any>([]);
     const [jobs, setJobs] = useState<any>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const [applied, setApplied] = useState<boolean>(false);
 
     useEffect(() => {
         axios
             .get('/api/session', { withCredentials: true })
             .then((response) => {
                 setUser(response.data);
+                setSkills(response.data.skills);
             })
             .finally(() => {
                 setLoading(false);
@@ -50,9 +52,7 @@ export function Dashboard(props: any) {
             </Typography>
             <div id='jobs'>
                 {jobs.map((job: any, index: any) => (
-                    <>
-                        <JobCard key={index} companyName={job.company} title={job.title} shortDesc={job.shortDesc} rate={job.rate} id={job._id} applied={applied} />
-                    </>
+                    <>{_.isEqual(skills, job.skills) && <JobCard key={index} companyName={job.company} title={job.title} shortDesc={job.shortDesc} rate={job.rate} id={job._id} />}</>
                 ))}
             </div>
         </div>

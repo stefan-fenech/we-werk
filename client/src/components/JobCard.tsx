@@ -17,7 +17,6 @@ export interface JobCardProps {
     rate: string;
     id: string;
     shortDesc: string;
-    applied: boolean;
 }
 
 export function JobCard(props: JobCardProps) {
@@ -38,7 +37,6 @@ export function JobCard(props: JobCardProps) {
                 <Typography variant='body2' color='text.secondary' gutterBottom>
                     {props.shortDesc}
                 </Typography>
-                {props.applied === true && <Chip label='Applied' color='success' />}
             </CardContent>
             <CardActions>
                 <Link to={`/job/${props.id}`}>
