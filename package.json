@@ -15,6 +15,7 @@
     "test": "echo \"No tests here. Did you mean to run tests in client or server directories instead?\""
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "concurrently": "^6.2.1"
   },
   "dependencies": {
