@@ -12,9 +12,6 @@ export interface JobCardAdminProps {
     rate: string;
     shortDesc: string;
     shortlist: string;
-    // handleModalOpen: () => void;
-    // handleModalClose: () => void;
-    // modalVisible: boolean;
     clickModal: () => void;
 }
 
@@ -39,9 +36,9 @@ export function JobCardAdmin(props: JobCardAdminProps) {
                         <Button size='small' onClick={props.clickModal}>
                             View Applicants
                         </Button>
+                        <Button size='small'>Close job</Button>
                     </CardActions>
                 </Card>
-                {/* <BasicModal handleClose={props.handleModalClose} open={props.modalVisible} /> */}
             </Box>
         </>
     );

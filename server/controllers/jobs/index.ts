@@ -63,4 +63,8 @@ router.post('/', (req: any, res: any) => {
         });
 });
 
+router.delete('/:id', (req, res) => {
+    console.log(req.body);
+});
+
 export default router;
