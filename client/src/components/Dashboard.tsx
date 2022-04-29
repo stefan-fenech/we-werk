@@ -28,9 +28,7 @@ export function Dashboard(props: any) {
     return (
         <div id='dashboard'>
             <Navigation />
-            <Typography variant='h4' sx={{ m: 2, textAlign: 'center' }}>
-                {userData.firstName}'s Job Dashboard
-            </Typography>
+            <h1>{userData.firstName}'s Job Dashboard</h1>
             <div id='jobs'>
                 {jobs.map((job: any, index: any) => (
                     <>{_.isEqual(skills, job.skills) && <JobCard key={index} companyName={job.company} title={job.title} shortDesc={job.shortDesc} rate={job.rate} id={job._id} />}</>

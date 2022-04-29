@@ -14,7 +14,7 @@ export function SignIn(props: any) {
     const theme = createTheme();
     return (
         <ThemeProvider theme={theme}>
-            <Container component='main' maxWidth='xs'>
+            <Container component='main' maxWidth='sm'>
                 <CssBaseline />
                 <Box
                     sx={{
@@ -33,17 +33,13 @@ export function SignIn(props: any) {
                     <Button fullWidth variant='contained' onClick={props.onSubmit} sx={{ mt: 3, mb: 2 }}>
                         Sign In
                     </Button>
-                    <Link to='/signup' style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                    <Link to='/signup' style={{ color: 'inherit', textDecoration: 'inherit', marginBottom: 5 }}>
                         Don't have an account? Sign Up!
                     </Link>
                     <Link to='/signup-poster' style={{ color: 'inherit', textDecoration: 'inherit' }}>
-                        Client looking to hire talent? Click here to sign up!
+                        Client looking to hire talent? Sign up!
                     </Link>
                 </Box>
-                <Grid container>
-                    <Grid item xs></Grid>
-                    <Grid item></Grid>
-                </Grid>
             </Container>
         </ThemeProvider>
     );

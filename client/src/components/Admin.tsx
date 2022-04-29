@@ -27,9 +27,7 @@ export function Admin(props: any) {
     return (
         <>
             <AdminNav />
-            <Typography variant='h4' sx={{ mt: 2, textAlign: 'center' }}>
-                {userData.company}'s Active Jobs
-            </Typography>
+            <h1>{userData.company}'s Active Jobs</h1>
             <div id='jobs'>
                 {jobs.map((result: any, index: any) => (
                     <>

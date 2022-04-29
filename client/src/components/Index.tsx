@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { SignIn } from './SignIn';
 import { useState } from 'react';
 import axios from 'axios';
+import test from '../images/test.png';
 
 export function Index(props: any) {
     const [email, setemail] = useState('');
@@ -44,7 +45,7 @@ export function Index(props: any) {
                     <SignIn handleEmail={handleEmail} handlePassword={handlePassword} onSubmit={onSubmit} error={error} />
                 </div>
                 <div id='client-login'>
-                    <img src={cover} height='500px' />
+                    <img src={test} height='500px' />
                 </div>
             </div>
         </>
