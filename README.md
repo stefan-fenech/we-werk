@@ -1,6 +1,6 @@
 # SEiFXR06 - Project 4 - Work I.T
 
-![screen](https://user-images.githubusercontent.com/26127452/165869270-d08a3c44-2bd5-4953-8f55-485207ae06ac.png)
+![screen2](https://user-images.githubusercontent.com/26127452/165927311-67d8a644-1c1a-49ae-9672-47bf38cbbda2.png)
 
 Work I.T is a talent attraction/management platform built to take the stress and uncertainty out of the recruitment process for both candidates and employers. As an employer, you are able to post jobs to the platform and let our incredibly sophisticated and complex matching algorithm only show your active job to candidates that have that right skill set.
 As a candidate you can shortlist yourself for that job and notify the client of your application. From there, go through a technical test with the client and if you're succesful, happy days! 
