@@ -1,4 +1,4 @@
-# SEifxr06 - Project 4 - Work I.T
+# SEiFXR06 - Project 4 - Work I.T
 
 ![screen](https://user-images.githubusercontent.com/26127452/165869270-d08a3c44-2bd5-4953-8f55-485207ae06ac.png)
 
