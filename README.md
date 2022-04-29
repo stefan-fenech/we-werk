@@ -1,4 +1,4 @@
-# sei-anz-seifxr06 - Project 4 - Work I.T
+# SEifxr06 - Project 4 - Work I.T
 
 ![screen](https://user-images.githubusercontent.com/26127452/165869270-d08a3c44-2bd5-4953-8f55-485207ae06ac.png)
 
@@ -7,8 +7,10 @@ As a candidate you can shortlist yourself for that job and notify the client of 
 
 Finding talent, fast.
 
-# Tech Stack
+# Live link :white_check_mark:
+You can view use the app [here](https://immense-dawn-44556.herokuapp.com/)
 
+# Tech Stack :computer:
 Built using the MERN stack:
 
 * Mongo DB - NoSql DB
@@ -18,7 +20,7 @@ Built using the MERN stack:
 * React - Front end
 * NodeJS - JS Backend
 
-# User Stories
+# User Stories :family:
 Alex works for a large technology company and is looking to hire 10 Data Engineers on a contract basis. Rather than having their recruitment team go out to market and try to find these people, Alex signs up to Work I.T.
 * Once vetted by the Work I.T team, Alex is able to post his 10 Data Engineer roles to the platform
 * The platform instantly finds and notifies the perfect candidates for the role
@@ -33,7 +35,10 @@ Sarah is a lifelong contractor who likes the flexibilty it affords her. She is l
 * Whilst passively looking for a new role and letting her current contract come to an end, Sarah is offered a new role through the Work I.T platform without much effort at all
 * Essentially letting the jobs come to her!
 
-# Future Features
+# Future Features :crystal_ball:
 * Add the ability for both clients and candidates to get notifications via email, within app and push notifications to let them know of either new applicants or progress in their job application
 * Add a wider array of potential jobs to post, thus increasing the amount of users on the platform
 * Allow clients to send messages/emails from within the platform
+
+# Bugs and other troubles :beetle:
+Had an issue with Modals with seemed to be common with our cohort. Passing information from an API request down 2 or 3 levels of components proved to be pretty tricky, but we got it working in the end! 
