@@ -1,6 +1,6 @@
 # Work I.T
 
-<img width="1440" alt="Screen Shot 2022-04-29 at 9 52 08 am" src="https://user-images.githubusercontent.com/26127452/165865520-4d855dd6-d070-48d7-9125-c1487c7f04b2.png">
+![screenshot](https://user-images.githubusercontent.com/26127452/165866922-81c067ae-8f2d-4232-9df9-4d44c5963477.png)
 
 Work I.T is a talent attraction/management platform built to take the stress and uncertainty out of the recruitment process for both candidates and employers. As an employer, you are able to post jobs to the platform and let our incredibly sophisticated and complex matching algorithm only show your active job to candidates that have that right skill set.
 As a candidate you can shortlist yourself for that job and notify the client of your application. From there, go through a technical test with the client and if you're succesful, happy days! 
