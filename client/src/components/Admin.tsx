@@ -31,7 +31,7 @@ export function Admin(props: any) {
             <div id='jobs'>
                 {jobs.map((result: any, index: any) => (
                     <>
-                        <p key={index}>{result.posterID === userID && <JobCardAdmin shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} result={result} />}</p>
+                        <p key={index}>{result.posterID === userID && <JobCardAdmin id={result._id} shortlist={result.shortlist.length} shortDesc={result.shortDesc} title={result.title} rate={result.rate} result={result} />}</p>
                     </>
                 ))}
             </div>

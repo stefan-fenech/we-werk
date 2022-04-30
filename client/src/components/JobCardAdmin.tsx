@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import BasicModal from './BasicModal';
 import { useState } from 'react';
 import ClickableChip from './ClickableChip';
+import axios from 'axios';
 
 export interface JobCardAdminProps {
     title: string;
@@ -14,6 +15,7 @@ export interface JobCardAdminProps {
     shortDesc: string;
     shortlist: string;
     result: any;
+    id: string;
 }
 
 export function JobCardAdmin(props: JobCardAdminProps) {
@@ -26,6 +28,14 @@ export function JobCardAdmin(props: JobCardAdminProps) {
     const handleModalClose = () => {
         setModalVisible(false);
     };
+
+    const handleDelete = (event: any) => {
+        axios.post(`/api/jobs/delete/`, { id: props.id }, { withCredentials: true }).then((response) => {
+            console.log(response);
+        });
+        console.log(props.id);
+    };
+
     return (
         <>
             <Box sx={{ width: 300 }}>
@@ -46,7 +56,9 @@ export function JobCardAdmin(props: JobCardAdminProps) {
                         <Button size='small' onClick={handleModalOpen}>
                             View Applicants
                         </Button>
-                        <Button size='small'>Close job</Button>
+                        <Button size='small' onClick={handleDelete}>
+                            Close job
+                        </Button>
                     </CardActions>
                 </Card>
             </Box>

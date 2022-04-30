@@ -66,4 +66,14 @@ router.post('/', (req: any, res: any) => {
         });
 });
 
+router.post('/delete', (req, res) => {
+    console.log(req.body.id);
+    const id = req.body.id;
+    db.collection('jobs')
+        .deleteOne({ _id: new ObjectId(id) })
+        .then((result: any) => {
+            console.log(result);
+        });
+});
+
 export default router;
