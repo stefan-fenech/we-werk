@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { response } from 'express';
 import bcrypt from 'bcrypt';
 import { MongoClient } from 'mongodb';
 
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     const email = req.session.email;
     db.collection('users')
         .findOne({ email: `${email}` })
-        .then(({ password, ...user }) => {
+        .then((user: any) => {
             res.json(user);
         });
 });
