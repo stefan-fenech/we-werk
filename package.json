@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "17.x"
+    "node": "17.x",
+    "npm": "8.x"
+
   },
   "scripts": {
     "postinstall": "(npm install --prefix server); (npm install --prefix client);",
