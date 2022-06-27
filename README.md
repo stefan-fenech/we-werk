@@ -14,7 +14,6 @@ You can view use the app [here](https://immense-dawn-44556.herokuapp.com/)
 Built using the MERN stack:
 
 * Mongo DB - NoSql DB
-* Mongoose - ORM
 * MUI - Front end
 * Express - Backend server
 * React - Front end
